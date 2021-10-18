@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_calculation"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#CCCCCC">
+
+    <TextView
+        android:id="@+id/banner"
+        android:layout_width="match_parent"
+        android:layout_height="75sp"
+        android:background="@color/black"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/btn_back"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginStart="25dp"
+        android:gravity="center"
+        android:src="@drawable/ic_baseline_arrow_back_24"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/banner" />
+
+    <TextView
+        android:id="@+id/total"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="128dp"
+        android:text="Monthly Payment"
+        android:textColor="#016608"
+        android:textSize="76px"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/total_value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:text="$00.00"
+        android:textColor="#016608"
+        android:textSize="108px"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/total" />
+
+    <TextView
+        android:id="@+id/principle_label"
+        android:layout_width="200sp"
+        android:layout_height="30sp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="80dp"
+        android:text="Principle Amount ($): "
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/total_value" />
+
+    <TextView
+        android:id="@+id/amortization_period_value"
+        android:layout_width="wrap_content"
+        android:layout_height="30sp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="32dp"
+        android:text="00"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        app:layout_constraintStart_toEndOf="@+id/amortization_period_label"
+        app:layout_constraintTop_toBottomOf="@+id/interest_per_year_value" />
+
+    <TextView
+        android:id="@+id/amortization_period_label"
+        android:layout_width="236dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="32dp"
+        android:text="Period (months): "
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/interest_per_year_label" />
+
+    <TextView
+        android:id="@+id/interest_per_year_value"
+        android:layout_width="wrap_content"
+        android:layout_height="30sp"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="28dp"
+        android:text="0.00"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        app:layout_constraintStart_toEndOf="@+id/interest_per_year_label"
+        app:layout_constraintTop_toBottomOf="@+id/principle_value" />
+
+    <TextView
+        android:id="@+id/principle_value"
+        android:layout_width="wrap_content"
+        android:layout_height="30sp"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="76dp"
+        android:text="00 000"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        app:layout_constraintStart_toEndOf="@+id/principle_label"
+        app:layout_constraintTop_toBottomOf="@+id/total_value" />
+
+    <TextView
+        android:id="@+id/interest_per_year_label"
+        android:layout_width="200sp"
+        android:layout_height="30sp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="28dp"
+        android:text="Interest Per Year (%):  "
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/principle_label" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

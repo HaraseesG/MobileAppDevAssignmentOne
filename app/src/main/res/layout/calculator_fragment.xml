@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_calculator"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#CCCCCC"
+    tools:context=".ui.main.CalculatorFragment">
+
+    <TextView
+        android:id="@+id/banner"
+        android:layout_width="match_parent"
+        android:layout_height="75sp"
+        android:background="@color/black"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/banner_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20sp"
+        android:layout_marginTop="15sp"
+        android:text="Monthly EMI Calculator"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="76px"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/banner" />
+
+    <EditText
+        android:id="@+id/principle"
+        android:layout_width="245dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="72dp"
+        android:layout_marginTop="12dp"
+        android:ems="10"
+        android:gravity="center"
+        android:inputType="number"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/principle_label" />
+
+    <EditText
+        android:id="@+id/interest_per_year"
+        android:layout_width="245dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="72dp"
+        android:layout_marginTop="12dp"
+        android:ems="10"
+        android:gravity="center"
+        android:inputType="number"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/interest_per_year_label" />
+
+    <TextView
+        android:id="@+id/amortization_period_label"
+        android:layout_width="200sp"
+        android:layout_height="30sp"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="36dp"
+        android:text="Amortization Period (months): "
+        android:textColor="@color/black"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/interest_per_year" />
+
+    <LinearLayout
+        android:id="@+id/save_EMI_wrapper"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/amortization_period"
+        android:layout_width="225sp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="52dp">
+        <Button
+            android:id="@+id/save_EMI"
+            android:text="Calculate EMI (Monthly Payments)"
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:theme="@style/Button.Red" />
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/amortization_period"
+        android:layout_width="245dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="72dp"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:gravity="center"
+        android:inputType="number"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/amortization_period_label" />
+
+    <TextView
+        android:id="@+id/principle_label"
+        android:layout_width="200sp"
+        android:layout_height="30sp"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="108dp"
+        android:text="Principle Amount ($): "
+        android:textColor="@color/black"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/interest_per_year_label"
+        android:layout_width="200sp"
+        android:layout_height="30sp"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="36dp"
+        android:text="Interest Per Year (%):  "
+        android:textColor="@color/black"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/principle" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
