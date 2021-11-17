@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#CCCCCC"
+    android:id="@+id/location_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clickable="true">
+
+    <TextView
+        android:id="@+id/main_banner"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_alignParentTop="true"
+        android:background="#708090"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/main_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:text="Location"
+        android:textColor="#14014C"
+        android:textSize="40sp"
+        app:layout_constraintBottom_toBottomOf="@+id/main_banner"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/main_banner"
+        app:layout_constraintVertical_bias="0.326" />
+
+    <TextView
+        android:id="@+id/set_latitude"
+        android:layout_width="200sp"
+        android:layout_height="40sp"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="92dp"
+        android:text="Latitude: "
+        android:textColor="@color/black"
+        android:textSize="28sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/main_banner" />
+
+    <EditText
+        android:id="@+id/latitude_val"
+        android:layout_width="245dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="72dp"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:gravity="center"
+        android:inputType="numberDecimal|numberSigned"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/set_latitude" />
+
+    <TextView
+        android:id="@+id/set_longitude"
+        android:layout_width="200sp"
+        android:layout_height="40sp"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="72dp"
+        android:text="Latitude: "
+        android:textColor="@color/black"
+        android:textSize="28sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/latitude_val" />
+
+    <EditText
+        android:id="@+id/longitude_val"
+        android:layout_width="245dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="72dp"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:gravity="center"
+        android:inputType="numberDecimal|numberSigned"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/set_longitude" />
+
+        <LinearLayout
+            android:id="@+id/button_wrapper"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/longitude_val"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="72dp">
+            <Button
+                android:id="@+id/delete_loc"
+                android:text="Cancel"
+                android:backgroundTint="#FF4500"
+                android:layout_height="match_parent"
+                android:layout_width="100dp"
+                android:layout_marginStart="50dp"
+                android:layout_marginEnd="40dp"/>
+
+            <Button
+                android:id="@+id/save_loc"
+                android:layout_width="170dp"
+                android:layout_height="match_parent"
+                android:backgroundTint="#008000"
+                android:text="Save Location" />
+        </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
