@@ -23,15 +23,6 @@ import java.util.Locale;
 
 
 public class UpdateLocationFragment extends Fragment {
-
-    public int getCurrId() {
-        return id;
-    }
-
-    public void setCurrId(int id) {
-        this.id = id;
-    }
-
     int id;
 
     Button delete, save;
@@ -49,6 +40,7 @@ public class UpdateLocationFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        // Work in onCreateView to use the data from the LocationsFragment
         View mainView = inflater.inflate(R.layout.update_location_fragment, container, false);
         db = new SQLHelper(getContext());
 
@@ -81,7 +73,7 @@ public class UpdateLocationFragment extends Fragment {
                 transaction.replace(R.id.location_main, locationsFragment);
                 transaction.disallowAddToBackStack();
                 transaction.commit();
-            } catch (Exception e) {
+            } catch (Exception e) { // We return to allow the app to continue running without crashing.
                 Toast.makeText(getContext(), "Deletion did not succeed at this time", Toast.LENGTH_LONG).show();
                 return;
             }
@@ -91,8 +83,9 @@ public class UpdateLocationFragment extends Fragment {
     }
 
     public void onDonePressed(EditText latitude, EditText longitude) {
+        // If the edit text fields are not empty
         if (latitude.getText().toString().length() > 0 && longitude.getText().toString().length() > 0) {
-            try {
+            try { // update the location and return to the main fragment
                 db.updateLoc(Integer.toString(getCurrId()), new Geocoder(getContext(), Locale.getDefault()).getFromLocation(Double.parseDouble(latitude.getText().toString()), Double.parseDouble(longitude.getText().toString()), 1).get(0).getAddressLine(0).trim(), Double.parseDouble(latitude.getText().toString().trim()), Double.parseDouble(longitude.getText().toString().trim()));
 
                 Fragment locationsFragment = new LocationsFragment();
@@ -100,12 +93,22 @@ public class UpdateLocationFragment extends Fragment {
                 transaction.replace(R.id.location_main, locationsFragment);
                 transaction.disallowAddToBackStack();
                 transaction.commit();
-            } catch (IOException e) {
+            } catch (IOException e) { // if the provided input was invalid
                 Toast.makeText(getContext(), "You must provide a VALID longitude and latitude to save a new location", Toast.LENGTH_LONG).show();
                 return;
             }
-        } else {
+        } else { // if any input field was left empty
             Toast.makeText(getContext(), "You must provide a longitude and latitude to save a new location", Toast.LENGTH_LONG).show();
         }
+    }
+
+    // given Id of resource to be edited
+    public int getCurrId() {
+        return id;
+    }
+
+    // setter for id of resource to be edited
+    public void setCurrId(int id) {
+        this.id = id;
     }
 }

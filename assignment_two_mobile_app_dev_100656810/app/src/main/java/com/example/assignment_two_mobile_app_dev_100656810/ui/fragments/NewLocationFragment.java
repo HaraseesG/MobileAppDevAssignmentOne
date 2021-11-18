@@ -64,9 +64,9 @@ public class NewLocationFragment extends Fragment {
     }
 
     public void onDonePressed(EditText latitude, EditText longitude) {
-        // Save location in db and restart main fragment
+        // if input fields are not empty
         if (latitude.getText().toString().length() > 0 && longitude.getText().toString().length() > 0) {
-            try {
+            try { // if the input is valid
                 db.addNewLoc(new Geocoder(getContext(), Locale.getDefault()).getFromLocation(Double.parseDouble(latitude.getText().toString()), Double.parseDouble(longitude.getText().toString()), 1).get(0).getAddressLine(0).trim(),
                         Double.parseDouble(latitude.getText().toString().trim()),
                         Double.parseDouble(longitude.getText().toString().trim()));
@@ -76,11 +76,11 @@ public class NewLocationFragment extends Fragment {
                 transaction.replace(R.id.location_main, locationsFragment);
                 transaction.disallowAddToBackStack();
                 transaction.commit();
-            } catch (IOException e) {
-                Toast.makeText(getContext(), "You must provide a longitude and latitude to save a new location", Toast.LENGTH_LONG).show();
+            } catch (IOException e) { // if the input is invalid
+                Toast.makeText(getContext(), "You must provide a VALID longitude and latitude to save a new location", Toast.LENGTH_LONG).show();
                 return;
             }
-        } else {
+        } else { // if an input field was empty
             Toast.makeText(getContext(), "You must provide a longitude and latitude to save a new location", Toast.LENGTH_LONG).show();
         }
     }

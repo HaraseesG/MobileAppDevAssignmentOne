@@ -36,6 +36,7 @@ public class LocationsRecyclerAdapter extends RecyclerView.Adapter<LocationsRecy
         CardView cardView;
         OnLocClickListener onLocClickListener;
 
+        // Initialize adapter and initialize click handler on each recycler view item
         public MyViewHolder(@NonNull View itemView, OnLocClickListener onLocClickListener) {
             super(itemView);
             addr = itemView.findViewById(R.id.full_addr);
@@ -86,6 +87,8 @@ public class LocationsRecyclerAdapter extends RecyclerView.Adapter<LocationsRecy
     }
 
     private Filter locationFilter = new Filter() {
+
+        // get only list items that match the specified criteria
         @Override
         protected FilterResults performFiltering(CharSequence charSequence) {
             ArrayList<Location> filteredList = new ArrayList<>();
@@ -107,6 +110,7 @@ public class LocationsRecyclerAdapter extends RecyclerView.Adapter<LocationsRecy
             return results;
         }
 
+        // Set results to show user
         @Override
         protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
             if (filterResults.values != null) {
@@ -121,6 +125,7 @@ public class LocationsRecyclerAdapter extends RecyclerView.Adapter<LocationsRecy
         }
     };
 
+    // Click handler interface for RecyclerView items
     public interface OnLocClickListener{
         void onLocClick(int position);
     }

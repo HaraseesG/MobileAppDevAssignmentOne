@@ -27,16 +27,6 @@ import java.util.ArrayList;
 public class LocationsFragment extends Fragment implements LocationsRecyclerAdapter.OnLocClickListener {
     RecyclerView recyclerView;
 
-    public int getVersion() {
-        return version;
-    }
-
-    public void setVersion(int version) {
-        this.version = version;
-    }
-
-    int version = 1;
-
     ArrayList<Location> availableLocations = new ArrayList<>();
     LocationsRecyclerAdapter locationsRecyclerAdapter;
 
@@ -64,12 +54,15 @@ public class LocationsFragment extends Fragment implements LocationsRecyclerAdap
         SearchView searchView = (SearchView) mainView.findViewById(R.id.searchLocs);
         recyclerView = mainView.findViewById(R.id.main_content);
 
+        // Add all database locations to local display arraylist
         displayLocations(db);
 
+        // set recycler view with the newly loaded arraylist (availableLocations)
         locationsRecyclerAdapter = new LocationsRecyclerAdapter(getContext(), availableLocations, this);
         recyclerView.setAdapter(locationsRecyclerAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
+        // Change to add location screen when the add button is pressed
         addLocation.setOnClickListener((view) -> {
             Fragment locationFragment = new NewLocationFragment();
             FragmentTransaction transaction = getParentFragmentManager().beginTransaction();
@@ -79,6 +72,7 @@ public class LocationsFragment extends Fragment implements LocationsRecyclerAdap
             transaction.commit();
         });
 
+        // Search locations
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String userSelection) {
@@ -93,6 +87,7 @@ public class LocationsFragment extends Fragment implements LocationsRecyclerAdap
         });
     }
 
+    // Load local display arraylist with all available locations in the database
     private void displayLocations(SQLHelper db) {
         Cursor cursor = db.readAll();
         if (cursor.getCount() == 0) {
@@ -109,11 +104,13 @@ public class LocationsFragment extends Fragment implements LocationsRecyclerAdap
         }
     }
 
+    // Click handler for when a RecyclerView item gets clicked connected through an interface
     @Override
     public void onLocClick(int position) {
         Location location = locationsRecyclerAdapter.getLoc(position);
 
         Bundle result = new Bundle();
+        // Create variables to pass onto update fragment
         String[] parameters = {String.valueOf(location.getId()), location.getAddr(), Double.toString(location.getLatitude()), Double.toString(location.getLongitude())};
         result.putStringArray("params", parameters);
         getParentFragmentManager().setFragmentResult("parameters_to_update", result);
